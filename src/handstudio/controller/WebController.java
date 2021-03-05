@@ -7,44 +7,66 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import handstudio.user.vo.UserVO;
 
 @Controller
 public class WebController {
 	
+	// 첫 번째 - POST
 	@RequestMapping(value="/user", method=RequestMethod.POST,
-					headers= {"Content-type=application/json"})
+			headers= {"Content-type=application/json"})
 	@ResponseBody
-	public Map insertUser(@RequestBody UserVO user) {
-		
-		UserVO u = user;
-
-		Map result = new HashMap();
-//		result.put("id", u.getLoginId());
-//		result.put("pw", u.getPassword());
-//		result.put("nickName", u.getNickname());
-		result.put("success", Boolean.TRUE);
-		return result;
-	}
+	public Map insertUser(@RequestBody Map<String, String> list) {
 	
-	@RequestMapping(value="login", method=RequestMethod.POST,
+	Map result = new HashMap();
+	result.put("success", Boolean.TRUE);
+	
+	//넘어온 값 확인
+	//result.put("id", list.get("loginId"));
+	//result.put("pw", list.get("password"));
+	//result.put("nickname", list.get("nickname"));
+	
+	return result;
+	}
+
+	// 두 번째 - POST
+	@RequestMapping(value="/login", method=RequestMethod.POST,
 					headers= {"Content-type=application/json"})
 	@ResponseBody
-	public Map<String, String> login(@RequestBody Map<String, String> list) {
+	public Map login(@RequestBody Map<String, String> list) {
 		
-		String id = list.get("loginId");
-		String pw = list.get("password");
 		String token = "123456";
 
-		
 		Map result = new HashMap();
 		result.put("token", token);
-		result.put("success", Boolean.TRUE.toString());
+		result.put("success", true);
+		
+		// 넘어온 값 확인
+//		String id = list.get("loginId");
+//		String pw = list.get("password");
+//		System.out.println(id + pw);
 
 		return result;
 	}
 	
-	
+	// 세 번째 - GET
+	@RequestMapping(value="/user", method= RequestMethod.GET)
+	@ResponseBody
+	public Map getUser(@RequestParam("token") int token) {
+		
+		String id = "";
+		String nickname = "";
+		
+		if(token == 123456) {
+			id = "hello";
+			nickname = "handstudio";
+		}
+		
+		Map result = new HashMap();
+		result.put("loginId", id);
+		result.put("nickname", nickname);
+		
+		return result;
+	}
 }
