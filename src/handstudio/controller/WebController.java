@@ -22,11 +22,6 @@ public class WebController {
 	Map result = new HashMap();
 	result.put("success", Boolean.TRUE);
 	
-	//넘어온 값 확인
-	//result.put("id", list.get("loginId"));
-	//result.put("pw", list.get("password"));
-	//result.put("nickname", list.get("nickname"));
-	
 	return result;
 	}
 
@@ -41,11 +36,6 @@ public class WebController {
 		Map result = new HashMap();
 		result.put("token", token);
 		result.put("success", true);
-		
-		// 넘어온 값 확인
-//		String id = list.get("loginId");
-//		String pw = list.get("password");
-//		System.out.println(id + pw);
 
 		return result;
 	}
