@@ -75,6 +75,10 @@
 
 
 
+------
+
+
+
 # 1. POST
 
 ```java
@@ -161,6 +165,8 @@ public Map getUser(@RequestParam("token") int token) {
 * 토큰이 123456이면 id와 nickname 저장하여 반환
 
 
+
+------
 
 
 
