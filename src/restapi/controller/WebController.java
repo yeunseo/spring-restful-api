@@ -1,4 +1,4 @@
-package handstudio.controller;
+package restapi.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +50,7 @@ public class WebController {
 		
 		if(token == 123456) {
 			id = "hello";
-			nickname = "handstudio";
+			nickname = "restapi";
 		}
 		
 		Map result = new HashMap();
