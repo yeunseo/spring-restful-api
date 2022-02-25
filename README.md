@@ -48,14 +48,14 @@
 
 ```xml
 <!-- Component scan -->
-<context:component-scan base-package="handstudio.controller" />
+<context:component-scan base-package="restapi.controller" />
 <!-- 어노테이션 사용 설정 -->
 <mvc:annotation-driven />
 <!-- dispatcher servlet 관련 설정 -->
 <mvc:default-servlet-handler />
 ```
 
-* `<context:component-scan base-package="handstudio.controller" />`
+* `<context:component-scan base-package="restapi.controller" />`
 
   * 패키지 경로를 명시해주면 해당 경로를 포함한 모든 하위 경로에 적용
   * @Controller, @Repository, @Service 등의 어노테이션을 명시한 자바 파일들을 Bean으로 등록시켜줌
@@ -148,7 +148,7 @@ public Map getUser(@RequestParam("token") int token) {
 
     if(token == 123456) {
         id = "hello";
-        nickname = "handstudio";
+        nickname = "restapi";
     }
 
     Map result = new HashMap();
